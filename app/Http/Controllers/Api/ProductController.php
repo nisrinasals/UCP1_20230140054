@@ -11,9 +11,6 @@ use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
-    /**
-     * TUGAS: Menampilkan semua data produk (GET /api/product)
-     */
     public function index()
     {
         $products = Product::with(['category', 'user'])->latest()->get();
@@ -24,9 +21,6 @@ class ProductController extends Controller
         ], 200);
     }
 
-    /**
-     * MODUL: Menyimpan data produk baru (POST /api/product)
-     */
     public function store(StoreProductRequest $request)
     {
         try {
@@ -49,9 +43,6 @@ class ProductController extends Controller
         }
     }
 
-    /**
-     * MODUL: Menampilkan detail satu produk (GET /api/product/{id})
-     */
     public function show(int $id)
     {
         $product = Product::with(['category', 'user'])->find($id);
@@ -66,12 +57,6 @@ class ProductController extends Controller
         ], 200);
     }
 
-    /**
-     * TUGAS: Mengubah data produk (PUT /api/product/{id})
-     */
-   /**
-     * TUGAS: Mengubah data produk (PUT /api/product/{id})
-     */
     public function update(StoreProductRequest $request, $id)
     {
         $product = Product::find($id);
@@ -85,9 +70,7 @@ class ProductController extends Controller
             'data' => $product
         ], 200);
     }
-    /**
-     * TUGAS: Menghapus produk (DELETE /api/product/{id})
-     */
+
     public function destroy($id)
     {
         $product = Product::find($id);
